@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="__CSS__/login.css">
+</head>
+<body>
+    <div style="background-color: #fff;">
+        <div class="top">
+            <div class="sreach-right">
+                <div class="top-right-title">
+                    <a href=""></a><img src="__IMG__/thinkphp-logo.png" alt="">
+                </div>
+                <div class="sreach">
+                    <input class="form-control" required type="search" name="keyword" placeholder="搜索帖子" />
+                </div>
+                <div class="sreach-ul">
+                    <ul><img src="__IMG__/guanwang.png" alt="">官网</ul>
+                    <ul><img src="__IMG__/wendang.png" alt="">文档</ul>
+                    <ul><img src="__IMG__/boke.png" alt="">博客</ul>
+                    <ul><img src="__IMG__/yunfuwu.png" alt="">云服务</ul>
+                </div>
+
+                <div class="top-right">
+                    <div class="puton">
+                        <a href="" style="color: black;margin-right: 20px;">登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sreach-center">
+            <div class="sreach-center1">
+                <a href=""></a><img src="__IMG__/thinkphp-login.png" alt="">
+            </div>
+            <div class="sreach-center2">
+                <div class="sreach-center2-1">
+                    <ul style="margin-top: 20px;">用户登录</ul>
+                </div>
+                <form action="{:\\think\\facade\\Route::buildUrl('user/dologin')}" method="post">
+                <div>
+                    <input class="form-control" type="text" name="unick" placeholder="请输入用户名" /><br>
+                    <input class="form-control" type="text" name="upa" placeholder="请输入密码" />
+                </div>
+                <div class="yzm">
+                    <input type="text" name="ucode" id="ucode" placeholder="请输入验证码">
+                    <div class="yzm-img">
+                        
+                        {:captcha_img()}
+                    </div>
+                </div>
+                <div class="center-puton">
+                    <input type="submit" style="color: black;margin-right: 20px;" value="登录">
+                </div>
+                {:token_field()} 
+                </form>
+            </div>
+            <div class="end">
+                <p>ThinkPHP知识库</p>
+                <p>顶想云提供技术支持</p>
+                <p>泸ICP备12007941号-2</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

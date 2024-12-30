@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="__CSS__/view.css">
+    <link rel="stylesheet" href="__CSS__/page.css">
+</head>
+
+<body>
+    <!-- 2203010201+2203010247-->
+    <div style="background-color: #fff;">
+        <div class="top">
+            <div class="sreach-right">
+                <div class="top-right-title">
+                    <a href=""></a><img src="__IMG__/thinkphp-logo.png" alt="">
+                </div>
+                <div class="sreach">
+                    <input class="form-control" required type="search" name='keyword' placeholder="搜索帖子" />
+                </div>
+                <div class="sreach-ul">
+                    <ul><img src="__IMG__/guanwang.png" alt="">官网</ul>
+                    <ul><img src="__IMG__/wendang.png" alt="">文档</ul>
+                    <ul><img src="__IMG__/boke.png" alt="">博客</ul>
+                    <ul><img src="__IMG__/yunfuwu.png" alt="">云服务</ul>
+                </div>
+
+                <div style="display: flex;flex-direction: column;margin-left: 15px;">
+                    <img src="__UIMG__/{:cookie('uImg')}" alt="" style="width: 50px;height: 50px;border-radius: 10px;">
+                    {:session('uNick')}
+                </div>
+
+                <div class="puton">
+                    <a href="{:url('user/me')}">
+                        <input type="button"
+                            style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                            value="用户中心">
+                    </a>
+                    <a href="{:url('user/logout')}">
+                        <input type="button"
+                            style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                            value="退出">
+                    </a>
+                </div>
+                <!-- {if session('uNick') != null}
+                <div style="display: flex;flex-direction: column;">
+                    <img src="__UIMG__/{:cookie('uImg')}" alt="" style="width: 50px;height: 50px;margin-left: -5px;border-radius: 10px;margin-right: -15px;"> 
+                    <a style="margin-left: -5px;color: black;">欢迎你：{:session('uNick')} </a>
+                    
+                </div>
+                {else/}
+                <div class="top-right"> -->
+                <!-- <div class="puton">
+                    <a href="{:url('user/login')}"><input type="button" style="color: black;margin-right: 3px;" value="立即登录"></a>
+                    <a href="{:url('user/reg')}"><input type="button" style="color: black;margin-right: 3px;" value="注册"></a>
+                    <a href="{:url('user/logout')}"><input type="button" style="color: black;margin-right: 3px;" value="注销"></a>
+                    </div>  -->
+                <!-- <div class="puton">
+                        <a href="{:url('user/login')}">
+                            <input type="button" style="color: white;" value="立即登录">
+                        </a>
+                        <a href="{:url('user/reg')}">
+                            <input type="button" style="color: white;" value="注册">
+                        </a>
+                        <a href="{:url('user/logout')}">
+                            <input type="button" style="color: white;" value="注销">
+                        </a>
+                    </div>  -->
+            </div>
+            <!-- {/if} -->
+        </div>
+        <!-- </div> -->
+    </div>
+    <div class="sreach-center">
+        <div class="sreach-center1">
+            <a href=""></a><img src="__IMG__/thinkphp-login.png" alt="">
+        </div>
+        <div class="sreach-center-top">
+            <div class="sreach-center2">
+                <ul>推荐</ul>
+                <div class="sreach-center2-1">
+                    <ul>最新</ul>
+                </div>
+                <ul>精华</ul>
+            </div>
+            <div class="sreach-center3">
+                <div class="sreach-center3-1">
+                    <!-- <ul>我要发言</ul>  -->
+                    <a href="{:url('index/post',['sid'=>input('sid')])}">
+                        <input type="button" value="我要发言" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="sreach-center-center" style="margin-right: 365px;">
+            <div class="sreach-center4">
+                {volist name='mes' id='mesRow'}
+                <div style="display: flex;">
+                    <div class="sreach-center4-1">
+                        <img src="__UIMG__/{$mesRow.u_img}" alt="">
+                    </div>
+                    <div class="sreach-center4-2">
+                        <div class="sreach-center4-3">
+                            <ul style="color: green;">{$mesRow.m_unick}</ul>
+                            <ul style="color: grey;margin-left: -30px;">{$mesRow.m_createat|date='Y-n-j H:i'}</ul>
+                        </div>
+                        <div class="sreach-center4-4">
+                            <img src="__IMG__/chong.png" alt="">
+                            <p>{$mesRow.s_name}</p>
+                        </div>
+                        <div class="sreach-center-4-5">
+                            <p>{$mesRow.m_title}</p>
+                            <p>{$mesRow.m_content}</p>
+                        </div>
+                        <div class="sreach-center-4-6">
+                            <ul><img src="__IMG__/xiangqing.png" alt="">
+                                <a href="{:url('index/detail',['mid' => $mesRow.m_id])}">详情</a>
+                            </ul>
+                            <ul><img src="__IMG__/zan.png" alt="">3</ul>
+                            <ul><img src="__IMG__/pinglun.png" alt="">{$mesRow.num}</ul>
+                            <!-- <ul><img src="__IMG__/pinglun.png" alt="">235</ul> -->
+                        </div>
+                        {/volist}
+                        <p>{$page|raw}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sreach-center11" >
+                <div style="border-bottom: 2px solid black;width: 321px;height: 60px;">
+                    <ul style="font-size: 20px;margin-top: 12px;">热门话题</ul>
+                </div>
+                {volist name='sec' id='secRow'}
+                <a href="{:url('index/view' , ['sid' => $secRow.s_id])}">
+                    <div class="sreach-center4-11">
+                        <img src="__IMG__/ht1.png" alt="">
+                        <ul>{$secRow.s_name}</ul>
+                    </div>
+                    <div class="sreach-center-12">
+                        <ul>{$secRow.count}个相关帖子</ul>
+                    </div>
+                </a>
+                {/volist}
+                <!-- <div class="sreach-center4-11">
+                        <a href=""></a><img src="__IMG__/ht2.png" alt="">
+                        <ul>我有一个想法</ul>
+                    </div>
+                    <div class="sreach-center-12">
+                        <ul>124个相关帖子</ul>
+                    </div>
+                    <div class="sreach-center4-11">
+                        <a href=""></a><img src="__IMG__/ht3.png" alt="">
+                        <ul>我有产品要分享</ul>
+                    </div>
+                    <div class="sreach-center-12">
+                        <ul>224个相关帖子</ul>
+                    </div>
+                    <div class="sreach-center4-11">
+                        <a href=""></a><img src="__IMG__/ht4.png" alt="">
+                        <ul>这个扩展很奈斯</ul>
+                    </div>
+                    <div class="sreach-center-12">
+                        <ul>314个相关帖子</ul>
+                    </div>
+                    <div class="sreach-center4-11">
+                        <a href=""></a><img src="__IMG__/ht5.png" alt="">
+                        <ul>社区反馈意见</ul>
+                    </div>
+                    <div class="sreach-center-12">
+                        <ul>104个相关帖子</ul>
+                    </div> -->
+                <div class="sreach-center13"
+                    style="background-color: white;margin-top: 25px;border-radius: 5px;height: 180px;">
+                    <div class="sreach-center14">
+                        <div style="display: flex;border-bottom: 2px solid black;width: 90%;height: 40px;">
+                            <ul style="margin-left: -10px;font-size: 20px;margin-top: 12px;height: 10px;">最新博客</ul>
+                            <div style="margin-left: 100px;">
+                                <ul style="font-size: 14px;color:grey;">全部</ul>
+                            </div>
+                        </div>
+                        <div class="sreach-center4-14">
+                            <ul>ThinkPHP6.1.2版本发布----兼容PHP8.2</ul>
+                        </div>
+                        <div class="sreach-center4-15">
+                            <ul>2023年02月10日</ul>
+                        </div>
+                        <div class="sreach-center4-14">
+                            <ul>ThinkAPI人脸核身接口----助力网站...</ul>
+                        </div>
+                        <div class="sreach-center4-15">
+                            <ul>2023年03月10日</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

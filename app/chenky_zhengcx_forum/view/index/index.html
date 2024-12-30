@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="__CSS__/forum.css">
+</head>
+
+<body>
+    <div style="background-color: #fff;">
+        <div class="top">
+            <div class="top-left">
+                <div class="top-left-title">
+                    <a href=""></a><img src="__IMG__/thinkphp-logo.png" alt="">
+                </div>
+                <div class="top-left-list">
+                    <ul>
+                        <li>文档</li>
+                        <li>应用</li>
+                        <li>扩展</li>
+                        <li>咨询</li>
+                        <li>生态</li>
+                        <li>赞助</li>
+                        <li>云市场</li>
+                    </ul>
+                </div>
+                <div class="sreach-right">
+                    <div class="sreach">
+                        <input class="form-control" required type="search" name='keyword' placeholder="搜索帖子" />
+                    </div>
+                    {if session('uNick') != null}
+                    <div style="display: flex;flex-direction: column;margin-left: 15px;">
+                        <img src="__UIMG__/{:cookie('uImg')}" alt="" style="width: 50px;height: 50px;border-radius: 10px;">
+                        {:session('uNick')}
+                    </div>
+
+                    <div class="puton">
+                        <a href="{:url('user/me')}">
+                            <input type="button" style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;" value="用户中心">
+                        </a>
+                        <a href="{:url('user/logout')}">
+                            <input type="button" style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;" value="退出">
+                        </a>
+                    </div>
+                    {else/}
+                    <div class="top-right">
+                        <div class="puton">
+                            <a href="{:url('user/login')}">
+                                <input type="button" style="color: white;" value="登录">
+                            </a>
+                            <a href="{:url('user/reg')}">
+                                <input type="button" style="color: white;" value="注册">
+                            </a>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div class="sreach-center">
+            <div>
+                <a href="" style="color: black;margin-left: 220px;">首页内容正在建设中</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

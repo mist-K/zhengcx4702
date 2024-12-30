@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="__CSS__/detail.css">
+    <link rel="stylesheet" href="__CSS__/page.css">
+</head>
+<body>
+    <!-- 2203010201+2203010235 -->
+    <div class="top" style="background-color: #fff;">
+        <div class="sreach-right">
+            <div class="top-right-title">
+                <a href=""></a><img src="__IMG__/thinkphp-logo.png" alt="">
+            </div>
+            <div class="sreach">
+                <input  class="form-control" required type="search" name='keyword' placeholder="搜索帖子" />
+            </div>
+            <div class="sreach-ul">
+                <ul><img src="__IMG__/guanwang.png" alt="">官网</ul>
+                <ul><img src="__IMG__/wendang.png" alt="">文档</ul>
+                <ul><img src="__IMG__/boke.png" alt="">博客</ul>
+                <ul><img src="__IMG__/yunfuwu.png" alt="">云服务</ul>
+            </div>
+            
+            <div style="display: flex;flex-direction: column;margin-left: 15px;">
+                <img src="__UIMG__/{:cookie('uImg')}" alt="" style="width: 50px;height: 50px;border-radius: 10px;">
+                {:session('uNick')}
+            </div>
+
+            <div class="puton">
+                <a href="{:url('user/me')}">
+                    <input type="button"
+                        style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                        value="用户中心">
+                </a>
+                <a href="{:url('user/logout')}">
+                    <input type="button"
+                        style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                        value="退出">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content">
+           <div class="detail">
+                <div class="detail-left">
+                    <div class="path">
+                        <span>首页</span>
+                        <span>/帖子详情</span>
+                    </div>
+                    <div class="detail-left-1">
+                        <div class="user">
+                            <img src="__IMG__/touxiang1.png" alt="">
+                            <div class="span1">
+                                <a href="#">chenky</a>
+                            </div>
+                            <div class="span2">
+                                <span>2024-12-2 15:07</span>
+                            </div>
+                        </div>
+                        <div class="huati-title">
+                            <img src="__IMG__/chong.png" alt="">
+                            <span>我找到一个BUG</span>
+                        </div>
+                        <div class="huati-content">
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tp5.1框架LTS版本，横型连接阿里云数据库DRDS(分布式关系数据库服务)时，在文件夹thinkPHP>library->think->db->connector->Mysql.php。</p>
+                            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件中的第90行左右，$sql='SHOW COLUMNS FROM',StableName;。</p> -->
+                            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会报措，因为DRDS并不支持SHOW COLUMNS语句。</p> -->
+                            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希望能够解决下这个bug，被坑了一下午差点怀疑人生了，我也尝试了解决，但是无限报措最后放弃了！！！！</p> -->
+                            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下是我找到的解决方法，但是我只尝试了前两种方法，不过后还是没有解决！！！</p> -->
+                        </div>
+                        <div class="huati-like">
+                            <img src="__IMG__/zan.png" alt="">
+                            <span>3</span>
+                        </div>
+                    </div>
+                    <div class="detail-left-2" style="height: auto;">
+                        {if session('uNick') != null}
+                        <div class="detail-left-2-top">
+                            <div class="pinglunNum"><span>评论5</span></div>
+                            <form action="{:url('index/doRes',['mid'=>$Request.param.mid])}" method="post">
+                                <div class="userAnswer">
+                                    <img src="__IMG__/touxiang2.jpg" alt="">
+                                    <textarea name="rcontent"  id="" cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="pinglunButton">
+                                    <div><span>剩余500字</span></div>
+                                    <div class="content-bottom-pinglun">
+                                       
+                                        <input type="submit" value="评论" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {/if}
+                        <div class="detail-left-2-bottom">
+                            {volist name='res' id='resRow'}
+                            <div class="pinglunDetail">
+                                <div class="user">
+                                    <img src="__UIMG__/{$resRow.u_img}" alt="">
+                                    <span>{$resRow.r_unick}&nbsp;&nbsp;&nbsp;</span>
+                                    <span>{$resRow.r_createat|date='Y-n-j H:i'}</span>
+                                </div>
+                                <div class="pinglun-test">
+                                    <p>{$resRow.r_content}</p>
+                                    <!-- <p>最终我使用了原生5ql语句解决我的场录问题，框架本身的话还是没有解决色，希望对你们有帮助吧</p> -->
+                                </div>
+                            
+                                <div class="pinglunReply">
+                                    <div class="pinglunReplyZan">
+                                        <img src="__IMG__/zan.png" alt="">
+                                        <span>赞</span>
+                                    </div>
+                                    <div class="pinglunReplyHui">
+                                        <img src="__IMG__/pinglun.png" alt="">
+                                        <span>回复</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {/volist}
+                            <p>{$page | raw}</p>                 
+                            <!-- <div class="pinglunDetail">
+                                <div class="user">
+                                    <img src="__PIC__/touxiang.png" alt="">
+                                    <span>用户2103010235&nbsp;&nbsp;&nbsp;</span>
+                                    <span>3天前</span>
+                                </div>
+                                <div class="pinglun-test">
+                                    <p>云数据库DRDS是啥？阿里云RDS PolarDB都用了，没有你说的问题</p>
+                                </div>
+                                <div class="pinglunReply">
+                                    <div class="pinglunReplyZan">
+                                        <img src="__PIC__/zan.png" alt="">
+                                        <span>赞</span>
+                                    </div>
+                                    <div class="pinglunReplyHui">
+                                        <img src="__PIC__/pinglun.png" alt="">
+                                        <span>回复</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-right">
+                    <div class="detail-right-top">
+                        <div class="aboutLouZhu">
+                            <p>关于楼主</p>
+                        </div>
+                        <div class="themeAndReply">
+                            <div class="theme">
+                                <span>主题</span>
+                                <span style="margin-top: 10px;">1</span>
+                            </div>
+                            <div class="reply">
+                                <span>回复</span>
+                                <span style="margin-top: 10px;">3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="end">
+                        <p>ThinkPHP知识库</p>
+                        <p>顶想云提供技术支持</p>
+                        <p>沪ICP备12007941号-2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+
+</style>
+</html>

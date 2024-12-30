@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="__CSS__/post.css">
+</head>
+
+<body>
+    <!-- 2203010201+2203010247 -->
+    <div class="top" style="background-color: #fff;">
+        <div class="sreach-right">
+            <div class="top-right-title">
+                <a href=""></a><img src="__IMG__/thinkphp-logo.png" alt="">
+            </div>
+            <div class="sreach">
+                <input class="form-control" required type="search" name='keyword' placeholder="搜索帖子" />
+            </div>
+            <div class="sreach-ul">
+                <ul><img src="__IMG__/guanwang.png" alt="">官网</ul>
+                <ul><img src="__IMG__/wendang.png" alt="">文档</ul>
+                <ul><img src="__IMG__/boke.png" alt="">博客</ul>
+                <ul><img src="__IMG__/yunfuwu.png" alt="">云服务</ul>
+                
+            </div>
+            <div style="display: flex;flex-direction: column;margin-left: 15px;">
+                <img src="__UIMG__/{:cookie('uImg')}" alt="" style="width: 50px;height: 50px;border-radius: 10px;">
+                {:session('uNick')}
+            </div>
+
+            <div class="puton">
+                <a href="{:url('user/me')}">
+                    <input type="button"
+                        style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                        value="用户中心">
+                </a>
+                <a href="{:url('user/logout')}">
+                    <input type="button"
+                        style="color: white;background-color: rgb(48, 161, 48);border-radius: 5%;height: 30px;margin-left: 15px;"
+                        value="退出">
+                </a>
+            </div>
+            <!-- <div class="top-right">
+                <div class="puton">
+                    <a href="{:url('user/login')}">
+                        <input type="button" style="color: white;" value="登录">
+                    </a>
+                    <a href="{:url('user/reg')}">
+                        <input type="button" style="color: white;" value="注册">
+                    </a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="main">
+        <div class="sreach-center1">
+            <a href=""></a><img src="__IMG__/thinkphp-login.png" alt="">
+        </div>
+        <form action="{:url('index/dopost')}" method="post">
+            <div class="content">
+                <div class="content-topAndRight" style="margin-top :10px;">
+                    <div class="content-top">
+                        <div class="findAndChooseBug">
+                            <div class="findBug">
+                                <img src="__IMG__/chong.png" alt="">
+                                <select name="msid" id="">
+                                    <option value="">请选择话题</option>
+                                    {volist name='sec' id='secRow'}
+                                    <option value="{$secRow.s_id}"
+                                    {if $secRow.s_id == input('sid')}
+                                    selected
+                                    {/if}
+                                    >{$secRow.s_name}</option>
+                                    {/volist}
+                                    <!-- <option value="1">我找到一个BUG</option>
+                                    <option value="2">我有一个想法</option>
+                                    <option value="3">我有产品要分享</option>
+                                    <option value="4">这个扩展很奈斯</option>
+                                    <option value="5">社区反馈建议</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="speakBug">
+                            <textarea name="mcontent" id="" cols="30" rows="10" placeholder="内容..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-bottom">
+                    <div class="content-bottom-pinglun">
+                        <input type="submit" value="发表">
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    <div class="end">
+        <p>ThinkPHP知识库</p>
+        <p>顶想云提供技术支持</p>
+        <p>沪ICP备12007941号-2</p>
+    </div>
+    </div>
+</body>
+<style>
+</style>
+
+</html>

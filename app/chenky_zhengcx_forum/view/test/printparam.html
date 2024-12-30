@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>系统变量输出</h2>
+    <ul>
+        <li>{:\\think\\facade\\Request::route('id')}</li>
+        <li>{:input('id')}</li>
+        <li>{:input('route.id')}</li>
+        <li>{:input('session.uInfo')}</li>
+        <li>{:input('cookie.uImg')}</li>
+        <li>{:input('server.SERVER_PORT')}</li>
+    </ul>
+    <h2>普通变量的输出</h2>
+    <!-- Undefined variable $name -->
+    <li>{$tplName}</li>
+    <!-- Array to string conversion -->
+    <li>{$tplRe.0}</li>
+    <li>{$tplRe[1]}</li>
+</body>
+</html>
